@@ -1,0 +1,24 @@
+<%= form_for @category do |f| %>
+
+  <%= f.fields_for :pieces, @category.pieces[@first_id..@last_id] do |builder| %>
+
+    <% @piece = builder.object %>
+    <div style = 'width: 690; float:left;'>
+      <%= render 'shared/thumbnail' %>
+      <div style = 'clear:both; width:230; margin-left: 60px'>
+        <%= builder.check_box :_destroy %>
+        <%= builder.label :_destroy, "Remove Piece" %>
+      </div>
+      <br style = 'clear:both'>
+    </div>
+
+  <% end %>
+
+  <div class="actions" style = 'clear:both;'>
+    <div style = 'width: 150px; margin: 20px auto'>
+    <%= f.submit 'Delete Selected Pieces'%>
+    </div>
+  </div>
+
+  
+<% end %>

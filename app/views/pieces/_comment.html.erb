@@ -1,0 +1,37 @@
+<div style = "margin:0px 40px; padding: 0px">
+  <h3 style = "color: #3b4f60; clear:both; padding: 0px;">
+  
+	<%= "Posted by " %>
+  <% if !@comment.user_id.nil? %>
+    <% begin %>
+      <% @user = User.find(@comment.user_id) %>
+      <%= link_to @user.username, user_path(@user) %>
+    <% rescue %>
+      <%= "UserNotFound" %>
+    <% end %>
+  <% else %>
+    <%= @comment.handle %>
+  <% end %>
+
+
+
+  <%= " (#{@comment.created_at.localtime.strftime("%H:%M, %B %d, %Y")}):" %>
+	<div style="width:660px; margin: 0px auto; border: 3px solid #2b3b44; background: #3b4f60">
+    <div style="width: 600px; margin: 5px auto;" >
+	  <h4 style = "color: #d0dfaa">
+   	  <%= "#{@comment.content}" %>
+      <span style="font-size:14px;">
+        <% if current_user && (current_user.id == 8 or current_user.id == @comment.user_id) %>
+          <br><br><%= '  (' %>
+          <%= link_to 'Remove Comment', @comment, :method => :delete, :style => "color: #a0af88; visited: #a0af88; hover: #a0af88; active: #a0af88;"%>
+          <%= ')' %>
+        <% end %>
+      </span>
+	  </h4>
+    </div>
+	  
+    </div>
+  </h3>
+</div>
+
+

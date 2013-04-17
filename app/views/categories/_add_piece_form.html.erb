@@ -1,0 +1,31 @@
+<%= form_for @category do |f| %>
+
+<div style='width:650px; margin:30px auto; border: 3px solid #2b3b44; background: #f0ffcc; padding:20px; clear:both;' >
+
+  <%= "Add new piece:" %><br>
+
+  <%= f.fields_for :pieces, @category.pieces.build do |builder| %>
+
+    <%= builder.label :codename %>
+    <%= builder.text_field :codename %><br>
+
+    <%= builder.label :title %>
+    <%= builder.text_field :title %><br>
+
+    <%= builder.label :description %>
+    <%= builder.text_area :description, :rows => 3 %><br>
+
+    <%= builder.label :dimensions %>
+    <%= builder.text_field :dimensions %><br>
+
+
+  <% end %>
+  </h3>
+  <div class="actions">
+    <%= f.submit 'Add Piece'%>
+  </div>
+
+</div>
+
+  
+<% end %>

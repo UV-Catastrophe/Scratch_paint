@@ -1,0 +1,24 @@
+<%= form_for @piece do |f| %>
+
+  <%= f.fields_for :comments do |builder| %>
+
+    <% @comment = builder.object %>
+    <%= render 'comment' %>
+
+      <div style = 'clear:both; width:230; margin-left: 60px'>
+        <%= builder.check_box :_destroy %>
+        <%= builder.label :_destroy, "Remove Comment" %>
+      </div>
+
+
+
+  <% end %>
+
+  <div class="actions" style = 'clear:both;'>
+    <div style = 'width: 115px; margin: 20px auto'>
+    <%= f.submit 'Confirm Delete'%>
+    </div>
+  </div>
+
+  
+<% end %>

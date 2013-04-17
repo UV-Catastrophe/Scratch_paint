@@ -1,0 +1,36 @@
+<%= form_for @piece do |f| %>
+  <% @current_user = current_user %>
+  <div style='width: 690px; clear:both; background: #d0dfaa; position:relative; padding: 20px;'>
+  <h2><%= "Post a comment:" %></h2>
+
+  <%= f.fields_for :comments, @piece.comments.build do |builder| %>
+
+    <% if @current_user.nil? %>
+      <%= builder.label :handle %><br>
+      <%= builder.text_field :handle %>
+      <%= "(" %>
+      <%= link_to 'login', login_path %>
+      <%= " or " %>
+      <%= link_to 'register', new_user_path %>
+      <%= " to post with an account)" %>
+    <% else %>
+
+      <%= builder.hidden_field :user_id, :value => @current_user.id %>
+
+      <%= "Logged in as #{@current_user.username} (" %> 
+      <%= link_to "logout", logout_path %><%= ")" %>
+    <% end %>
+
+    <br><br>
+    <%= builder.label 'Comment:' %><br>
+    <%= builder.text_area :content, :rows => 3 %><br>
+
+  <% end %>
+  <div class="actions">
+    <%= f.submit 'Submit Comment'%>
+  </div>
+
+  </div>
+
+  
+<% end %>

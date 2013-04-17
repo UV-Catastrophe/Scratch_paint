@@ -1,0 +1,13 @@
+<% @categories.sort_by{|a| a[:name]}.each do |category| %>
+  <% @category = category %>
+  <%= render 'display_category' %>
+
+
+<% end %>
+<% if current_user && current_user.id == 8 %>
+<div style='width:300px; margin:30px auto; border: 3px solid #2b3b44; background: #f0ffcc; padding:0px' >
+  <h3 style = 'margin: 10px; text-align:center'>
+    <%= link_to 'New', new_category_path %>
+  </h3>
+</div>
+<% end %>

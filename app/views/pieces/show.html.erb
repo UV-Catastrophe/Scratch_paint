@@ -1,0 +1,45 @@
+<p id="notice" style="text-align: center"><%= notice %></p>
+
+<%= image_tag("#{@piece.codename}/primary.png", alt: "rails.png", :style => 'display: block; margin:25px auto; border:2px solid #66667b') %>
+
+<div style='width: 200px; margin: 10px auto; display:block; line-height: 200%;'>
+  <h1 style='text-align: center; width: 100%; color: #2b3b44;'>
+    <%= @piece.title %>
+  </h1>
+</div>
+
+<h3 style='text-align: center; width: 400px; margin: 10px auto; color: #2b3b44; display: block'>
+  <%= @piece.description %>
+</h3>
+
+<h3 style='text-align: center; width: 100%; margin: 25px auto; clear:both; color: #2b3b44;'>
+
+  <%= link_to 'Back', category_path(@category, :page_num => @page_num), :style => 'margin: 10px' %>
+
+  <% if current_user && current_user.id == 8 %>
+  <%= link_to 'Edit', edit_piece_path(@piece, :category_id => @category, :page_num => @page_num), :style => 'margin: 10px' %>
+  <% end %>
+
+</h3>
+
+<div style='width:100%; border-top:3px solid #2b3b44' >
+  <%= render 'add_comment_form' %>
+
+  <% @piece.comments.order('created_at DESC').each do |comment| %>
+
+    <% @comment = comment %>
+
+    <%= render 'comment' %>
+
+
+    
+
+  <% end %>
+
+</div>
+
+
+
+
+
+

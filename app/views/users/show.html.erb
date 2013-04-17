@@ -1,0 +1,19 @@
+
+<h2 style='text-align: center; margin: 30px; color: #2b3b44;'>
+  <%= "Comments by User '#{@user.username}'" %>
+</h2>
+
+<h4 style='text-align: center; margin: 30px; color: #2b3b44;'>
+<% if current_user && (@user.id == current_user.id or current_user.id == 8) %>
+  <%= ' (' %>
+  <%= link_to 'Delete This Account', @user, :confirm => 'Are you sure?',
+                                            :method => :delete,
+                                            :style => "color: #2b3b44; visited: #2b3b44; hover: #2b3b44; active: #2b3b44;" %>
+  <%= ' )' %>
+<% end %>
+</h4>
+
+<% @user.comments.each do |comment| %>
+  <% @comment = comment %>
+  <%= render 'comment' %>
+<% end %>

@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+  <%= "Username: #{user.username}" %><br>
+  <%= "Email: #{user.email}" %><br>
+  <%= "Password Hash: #{user.password_digest}" %><br>
+  <%= link_to 'Remove User', user, :confirm => "are you sure?"
+                                   :method => :delete %><br><br>
+<% end %>

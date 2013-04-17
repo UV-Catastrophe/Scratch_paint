@@ -1,0 +1,20 @@
+<div style = "margin:0px 40px; padding: 0px">
+  <h3 style = "color: #3b4f60; clear:both; padding: 0px;">
+
+  <% @piece = Piece.find(@comment.piece_id) %>
+  <%= "Commented on " %>
+  <%= link_to @piece.title, piece_path(@piece) %>
+
+  <%= " (#{@comment.created_at.strftime("%H:%M, %B %d, %Y")}):" %>
+	<div style="width:660px; margin: 0px auto; border: 3px solid #2b3b44; background: #3b4f60">
+    <div style="width: 600px; margin: 5px auto;" >
+	  <h4 style = "color: #d0dfaa">
+   	  <%= "#{@comment.content}" %><br>
+	  </h4>
+    </div>
+	  
+    </div>
+  </h3>
+</div>
+
+

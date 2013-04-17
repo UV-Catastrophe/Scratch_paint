@@ -1,0 +1,39 @@
+<% if current_user && current_user.id == 8 %>
+<div style='width:300px; margin:30px auto; border: 3px solid #2b3b44; background: #f0ffcc; padding:0px' >
+  <h3 style = 'margin: 10px; text-align:center'>
+    <%= link_to 'Edit', edit_category_path(@category, :page_num => @page_num) %>
+  </h3>
+</div>
+<% end %>
+
+<% if @count > 0 %>
+  <% @category.pieces[@first_id..@last_id].each do |piece| %>
+    <% @piece = piece %>
+    <%= render 'shared/thumbnail' %>
+  <% end %>
+    
+<% end %>
+
+<div style='width:750px; height:0px; clear:both;'>
+</div>
+
+
+<div style='width:300px; margin:30px auto; padding:0px; clear:both;' >
+  <h3 style = 'width: 200px; margin: 10px auto; text-align:center'>
+    <% if @count > @page_cap %>
+      <%= "Page #{@page_num}" %><br>
+    <% end %>
+  </h3>
+
+  <h3 style='text-align: center; margin: 10px;'>
+    
+
+    <% if @page_num > 1 %>
+      <%= link_to 'Back', category_path(@category, :page_num => @page_num - 1) %>
+    <% end %>
+
+    <% if @page_num < @count / @page_cap + 1 %>
+      <%= link_to 'Next', category_path(@category, :page_num => @page_num.next) %>
+    <% end %>
+  </h3>
+</div>

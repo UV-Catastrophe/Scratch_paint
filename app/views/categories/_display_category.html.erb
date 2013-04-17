@@ -1,0 +1,22 @@
+<div style = 'width:650px; height: 220px; margin:50px auto; position:relative'>
+  <div style = 'width: 100%; position:absolute; top:55px; left: 0px; height:100px; background: #2b3b44; z-index:1'>
+    <div style='width: 200px; float:right; margin:7px 10px'>
+      <h1 style="color:#d0dfaa">
+        <%= "#{@category.name}" %>
+      </h1>
+    </div>
+
+  </div>
+
+  <div style = 'width:300px; height: 220px; position:absolute; top:0px; left:30px; z-index:2'>
+    <%= image_tag("categories/#{@category.name}.png", :style => 'display: block; margin:10px auto; border:2px solid #66667b;') %>
+    
+  </div>
+
+  <%= link_to '', category_path(@category), :style => "position: absolute; width:100%; height:100%; z-index:3; top:0; left:0; opacity:0;" %>
+  <div style="clear:both" >
+
+  </div>
+    
+
+</div>
